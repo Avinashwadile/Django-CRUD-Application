@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Show Page</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Show Content Table</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        {% if key1 %}
+        <tbody>
+          {% for i in key1 %}
+          <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.fname}}</td>
+            <td>{{i.lname}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.contact}}</td>
+            <td>
+                <form name="EditForm" action="{% url 'editpage' pk=i.id  %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+            <td>
+                <form name="DeleteForm" action="{%url 'delete' pk=i.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+          </tr>
+          {% endfor %} 
+        </tbody>
+        {% endif %}
+      </table>
+    </div>
+  </body>
+</html>
