@@ -6,11 +6,11 @@ U - Update
 D - Delete
 
 steps to start the project
-1. go to file location & open the command prompt and use these commands
-   actvating django application
+1. go to file location & open the command prompt and use these commandsto
+   actvate django application
    myvenv/Scripts/activate
 
-2. install Django
+2. install Django use 
    pip install Django
 
 3. Run Server
